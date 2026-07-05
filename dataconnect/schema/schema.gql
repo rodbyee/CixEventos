@@ -1,0 +1,51 @@
+type User @table {
+  username: String!
+  passwordHash: String!
+  role: String!
+  createdAt: Timestamp!
+  email: String
+  fullName: String
+  phoneNumber: String
+}
+
+type Property @table {
+  listingAgent: User
+  address: String!
+  type: String!
+  price: Int!
+  status: String!
+  createdAt: Timestamp!
+  bedrooms: Int
+  bathrooms: Int
+  areaSqFt: Int
+  description: String
+  yearBuilt: Int
+  city: String
+  state: String
+  zipCode: String
+}
+
+type Showing @table {
+  property: Property!
+  agent: User!
+  client: User!
+  showingDate: Date!
+  showingTime: String!
+  status: String!
+  createdAt: Timestamp!
+  notes: String
+}
+
+type ClientInterest @table {
+  client: User!
+  property: Property!
+  createdAt: Timestamp!
+  notes: String
+}
+
+type Photo @table {
+  property: Property!
+  imageUrl: String!
+  createdAt: Timestamp!
+  caption: String
+}
